@@ -9,7 +9,13 @@ public class KillZone : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-			col.gameObject.GetComponent<CharacterControls>().LoadCheckPoint();
-		}
-	}
+            ResetLevel();
+        }
+    }
+
+    void ResetLevel()
+    {
+        // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
