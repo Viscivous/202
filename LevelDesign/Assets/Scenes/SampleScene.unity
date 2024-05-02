@@ -4584,7 +4584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1269110639757668911, guid: 9a26ae0160f2440449839dccb625bc5c, type: 3}
       propertyPath: bossViewDistance
-      value: 1000000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1269110639757668911, guid: 9a26ae0160f2440449839dccb625bc5c, type: 3}
       propertyPath: projectileCooldown
