@@ -13,6 +13,8 @@ public class CharacterControls : MonoBehaviour {
 	public float jumpHeight = 2.0f;
 	public float maxFallSpeed = 20.0f;
 	public float rotateSpeed = 25f; //Speed the player rotate
+	public int maxJumps = 1; // Maximum number of jumps allowed
+	private int jumpCount = 0; // Current jump count
 	private Vector3 moveDir;
 	public GameObject cam;
 	private Rigidbody rb;
@@ -143,6 +145,32 @@ public class CharacterControls : MonoBehaviour {
 				slide = false;
 			}
 		}
+
+		if (IsGrounded())
+            {
+                moveDir.y = 0f;
+                jumpCount = 0; // Reset jump count when grounded
+
+                if (Input.GetButtonDown("Jump"))
+                {
+                    moveDir.y = jumpHeight;
+                    jumpCount++; // Increment jump count when jumping
+                }
+            }
+            else
+            {
+                // Check if the player can perform another jump
+                if (Input.GetButtonDown("Jump") && jumpCount < maxJumps)
+                {
+                    moveDir.y = jumpHeight;
+                    jumpCount++; // Increment jump count when jumping
+                    
+                   // if(jumpCount == 2)
+                   // {
+                       // animator.SetTrigger("SecondJump");
+                   // }
+                }
+            }
 	}
 
 	float CalculateJumpVerticalSpeed () {
